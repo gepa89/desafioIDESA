@@ -14,7 +14,7 @@ class Database
      */
     public static function setDB(): void
     {
-        // Verifica si el directorio 'Db' existe, si no, lo crea
+        // Verificar si el directorio 'Db' existe, si no, crearlo
         $dbDir = dirname(self::$dbPath);
         if (!is_dir($dbDir)) {
             mkdir($dbDir, 0755, true);
@@ -58,8 +58,6 @@ class Database
         } catch (\Exception $e) {
             $db->exec("ROLLBACK");
             echo "An error occurred: " . $e->getMessage();
-        } finally {
-            $db->close();
         }
     }
 
